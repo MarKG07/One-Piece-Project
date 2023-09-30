@@ -1,6 +1,18 @@
 body {
     background-color: #000000;
     color: #FFFFFF;
+    overflow: hidden; /*tira o que pode sobrar na tela, fazendo com que o scroll apareça sem necessidade*/
+}
+
+main::after { /*pseudo-elemento*/
+    position: fixed; /*fixo na tela*/
+    top: 0;
+    left: 0;
+    min-height: 100vh;
+    width: 80vw;
+    
+    content: ""; /*precisa ter para linear gradient funcionar*/
+    background: linear-gradient(-233deg, #000000 40%, rgba(0, 0, 0, 0) 65%) no-repeat;
 }
 
 main .personagem {
@@ -28,6 +40,16 @@ main .personagem .imagem { /*só classe imagem*/
     justify-content: center;
     min-height: 100vh;
     max-width: 380px;
+
+    z-index: 1; /*coloca por cima dos outros elementos, no caso em cima do gradiente*/
+}
+
+.conteudo .logo {
+    background-image: url("../img/one-piece-logo.png");
+    background-size: cover; /*cobre a area escolhida (height, width)*/
+    height: 100px;
+    width: 230px;
+    margin-bottom: 35px;
 }
 
 .conteudo .nome-personagem {
@@ -35,4 +57,42 @@ main .personagem .imagem { /*só classe imagem*/
     font-family: "Secular One";
     font-weight: 400;
     margin-bottom: 20px;
+}
+
+.conteudo .descricao {
+    font-family: "Rubik";
+    line-height: 24px;
+}
+
+.botoes {
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    height: 100vh;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.botoes .botao {
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.botoes .botao img{
+    border-radius: 50%;
+}
+
+.botoes .botao.selecionado {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px #D9D9D9;
+    
 }
